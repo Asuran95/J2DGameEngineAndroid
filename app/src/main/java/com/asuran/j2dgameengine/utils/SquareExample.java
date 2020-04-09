@@ -15,9 +15,9 @@ import javax.microedition.khronos.opengles.GL11;
 /**
  * A vertex shaded square.
  */
-public class Square
+public class SquareExample
 {
-    public Square()
+    public SquareExample()
     {
         float vertices[] =
                 {
