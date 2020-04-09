@@ -1,4 +1,4 @@
-package com.example.j2dframeworkandroid;
+package com.asuran.j2dgameengine;
 
 import android.annotation.SuppressLint;
 import android.content.pm.ActivityInfo;

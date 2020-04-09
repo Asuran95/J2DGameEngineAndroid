@@ -1,4 +1,4 @@
-package com.example.j2dframeworkandroid.listeners;
+package com.asuran.j2dgameengine.listeners;
 
 public interface GestureListener {
 

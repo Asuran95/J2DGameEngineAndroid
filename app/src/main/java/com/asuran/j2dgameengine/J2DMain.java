@@ -1,6 +1,6 @@
-package com.example.j2dframeworkandroid;
+package com.asuran.j2dgameengine;
 
-import com.example.j2dframeworkandroid.spaceshipgame.SpaceShipMain;
+import com.asuran.j2dgameengine.spaceshipgame.SpaceShipMain;
 
 public class J2DMain {
 

@@ -1,4 +1,4 @@
-package com.example.j2dframeworkandroid.utils;
+package com.asuran.j2dgameengine.utils;
 
 import android.graphics.Rect;
 

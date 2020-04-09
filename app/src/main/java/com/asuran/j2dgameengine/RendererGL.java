@@ -1,7 +1,7 @@
-package com.example.j2dframeworkandroid;
+package com.asuran.j2dgameengine;
 
 import android.opengl.GLSurfaceView;
-import com.example.j2dframeworkandroid.listeners.RenderListener;
+import com.asuran.j2dgameengine.listeners.RenderListener;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 import javax.microedition.khronos.opengles.GL11;

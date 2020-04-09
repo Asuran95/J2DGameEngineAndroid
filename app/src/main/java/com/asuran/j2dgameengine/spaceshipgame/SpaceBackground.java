@@ -1,10 +1,10 @@
-package com.example.j2dframeworkandroid.spaceshipgame;
+package com.asuran.j2dgameengine.spaceshipgame;
 
-import com.example.j2dframeworkandroid.GameEngine;
-import com.example.j2dframeworkandroid.J2DCanvas;
-import com.example.j2dframeworkandroid.SpriteLoader;
-import com.example.j2dframeworkandroid.entitiesclasses.AbstractEntity;
-import com.example.j2dframeworkandroid.utils.GLSprite;
+import com.asuran.j2dgameengine.GameEngine;
+import com.asuran.j2dgameengine.J2DCanvas;
+import com.asuran.j2dgameengine.SpriteLoader;
+import com.asuran.j2dgameengine.entitiesclasses.AbstractEntity;
+import com.asuran.j2dgameengine.utils.GLSprite;
 
 public class SpaceBackground extends AbstractEntity {
     public SpaceBackground(GameEngine manager) {

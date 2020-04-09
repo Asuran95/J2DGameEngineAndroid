@@ -1,4 +1,4 @@
-package com.example.j2dframeworkandroid.utils;
+package com.asuran.j2dgameengine.utils;
 
 public class GLVec2f {
     public float v0 = 0.0f;

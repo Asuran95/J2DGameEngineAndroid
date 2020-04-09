@@ -1,4 +1,4 @@
-package com.example.j2dframeworkandroid.utils;
+package com.asuran.j2dgameengine.utils;
 
 import android.content.Context;
 import android.graphics.*;
@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
-import java.nio.IntBuffer;
 
 import javax.microedition.khronos.opengles.GL10;
 import javax.microedition.khronos.opengles.GL11;

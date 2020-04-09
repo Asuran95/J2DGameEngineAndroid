@@ -1,12 +1,12 @@
-package com.example.j2dframeworkandroid;
+package com.asuran.j2dgameengine;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.opengl.GLUtils;
 
-import com.example.j2dframeworkandroid.utils.GLSprite;
-import com.example.j2dframeworkandroid.utils.GLVec2f;
+import com.asuran.j2dgameengine.utils.GLSprite;
+import com.asuran.j2dgameengine.utils.GLVec2f;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;

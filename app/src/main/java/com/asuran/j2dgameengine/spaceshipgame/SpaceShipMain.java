@@ -1,12 +1,12 @@
-package com.example.j2dframeworkandroid.spaceshipgame;
+package com.asuran.j2dgameengine.spaceshipgame;
 
 
-import com.example.j2dframeworkandroid.GameEngine;
-import com.example.j2dframeworkandroid.J2DCanvas;
-import com.example.j2dframeworkandroid.SpriteLoader;
-import com.example.j2dframeworkandroid.entitiesclasses.AbstractEntity;
-import com.example.j2dframeworkandroid.listeners.GestureListener;
-import com.example.j2dframeworkandroid.utils.GLRect;
+import com.asuran.j2dgameengine.GameEngine;
+import com.asuran.j2dgameengine.J2DCanvas;
+import com.asuran.j2dgameengine.SpriteLoader;
+import com.asuran.j2dgameengine.entitiesclasses.AbstractEntity;
+import com.asuran.j2dgameengine.listeners.GestureListener;
+import com.asuran.j2dgameengine.utils.GLRect;
 
 public class SpaceShipMain extends AbstractEntity {
     public SpaceShipMain(GameEngine manager) {

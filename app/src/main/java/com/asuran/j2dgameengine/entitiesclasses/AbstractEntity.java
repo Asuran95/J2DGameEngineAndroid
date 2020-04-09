@@ -1,9 +1,9 @@
-package com.example.j2dframeworkandroid.entitiesclasses;
+package com.asuran.j2dgameengine.entitiesclasses;
 
-import com.example.j2dframeworkandroid.GameEngine;
-import com.example.j2dframeworkandroid.J2DCanvas;
-import com.example.j2dframeworkandroid.SpriteLoader;
-import com.example.j2dframeworkandroid.utils.GLVec2f;
+import com.asuran.j2dgameengine.GameEngine;
+import com.asuran.j2dgameengine.J2DCanvas;
+import com.asuran.j2dgameengine.SpriteLoader;
+import com.asuran.j2dgameengine.utils.GLVec2f;
 
 public abstract class AbstractEntity implements IEntity {
 

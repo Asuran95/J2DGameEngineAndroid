@@ -1,12 +1,11 @@
-package com.example.j2dframeworkandroid;
+package com.asuran.j2dgameengine;
 
 import android.content.Context;
-import android.view.GestureDetector;
 
-import com.example.j2dframeworkandroid.entitiesclasses.IEntity;
-import com.example.j2dframeworkandroid.listeners.GestureListener;
-import com.example.j2dframeworkandroid.utils.GLVec2f;
-import com.example.j2dframeworkandroid.listeners.RenderListener;
+import com.asuran.j2dgameengine.entitiesclasses.IEntity;
+import com.asuran.j2dgameengine.listeners.GestureListener;
+import com.asuran.j2dgameengine.utils.GLVec2f;
+import com.asuran.j2dgameengine.listeners.RenderListener;
 import java.util.ArrayList;
 import javax.microedition.khronos.opengles.GL10;
 

@@ -1,7 +1,7 @@
-package com.example.j2dframeworkandroid.spaceshipgame;
+package com.asuran.j2dgameengine.spaceshipgame;
 
-import com.example.j2dframeworkandroid.GameEngine;
-import com.example.j2dframeworkandroid.entitiesclasses.AbstractEntity;
+import com.asuran.j2dgameengine.GameEngine;
+import com.asuran.j2dgameengine.entitiesclasses.AbstractEntity;
 
 import java.util.ArrayList;
 import java.util.Random;

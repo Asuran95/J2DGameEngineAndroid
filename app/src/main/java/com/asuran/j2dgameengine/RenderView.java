@@ -1,10 +1,10 @@
-package com.example.j2dframeworkandroid;
+package com.asuran.j2dgameengine;
 
 import android.content.Context;
 import android.opengl.GLSurfaceView;
 import android.view.MotionEvent;
 
-import com.example.j2dframeworkandroid.listeners.TouchListener;
+import com.asuran.j2dgameengine.listeners.TouchListener;
 
 public class RenderView extends GLSurfaceView {
 
