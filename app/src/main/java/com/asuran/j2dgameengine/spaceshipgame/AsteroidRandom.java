@@ -7,14 +7,10 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class AsteroidRandom extends AbstractEntity {
-    public AsteroidRandom(GameEngine manager) {
-        super(manager);
-    }
-
     private Random rand = new Random();
     private ArrayList<Asteroid> asteroids = new ArrayList();
+    private long timeElapse = System.currentTimeMillis();
 
-    long timeElapse = System.currentTimeMillis();
     @Override
     public void update() {
         ArrayList<Asteroid> asteroidsAlive = new ArrayList();
@@ -25,8 +21,15 @@ public class AsteroidRandom extends AbstractEntity {
         }
         asteroids = asteroidsAlive;
 
-        if(System.currentTimeMillis() > timeElapse+500){
-            asteroids.add(new Asteroid(manager, rand.nextFloat()*(manager.getWidth() - 0.1f) + 0.1f, rand.nextFloat()*(0.1f - 0.05f) + 0.05f, rand.nextFloat()*(0.5f - 0.1f) + 0.1f));
+        if(System.currentTimeMillis() > timeElapse+500) {
+            float posX = rand.nextFloat() * (getGameEngine().getWidth());
+            float size = rand.nextFloat() * (0.1f - 0.05f) + 0.05f;
+            float speed = rand.nextFloat() * (0.5f - 0.1f) + 0.1f;
+            Asteroid asteroid = new Asteroid(posX, size, speed);
+
+            getGameEngine().addEntity(asteroid);
+
+            asteroids.add(asteroid);
             timeElapse = System.currentTimeMillis();
         }
     }

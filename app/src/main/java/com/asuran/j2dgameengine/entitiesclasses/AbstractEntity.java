@@ -10,12 +10,14 @@ public abstract class AbstractEntity implements IEntity {
     protected boolean alive = true;
     protected int layer = 0;
     protected GLVec2f position = new GLVec2f(0, 0);
+    private GameEngine gameEngine;
 
-    protected GameEngine manager;
+    public GameEngine getGameEngine() {
+        return gameEngine;
+    }
 
-    public AbstractEntity(GameEngine manager){
-        manager.addEntity(this);
-        this.manager = manager;
+    public void setGameEngine(GameEngine gameEngine) {
+        this.gameEngine = gameEngine;
     }
 
     @Override

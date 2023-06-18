@@ -12,15 +12,15 @@ public class CollisionCore extends AbstractEntity {
     private AsteroidRandom asteroidRandom;
     private ComboText comboText;
 
-    public CollisionCore(GameEngine manager, PlayerShip playerShip, AsteroidRandom asteroidRandom) {
-        super(manager);
+    public CollisionCore(PlayerShip playerShip, AsteroidRandom asteroidRandom) {
         this.playerShip = playerShip;
         this.asteroidRandom = asteroidRandom;
     }
 
     @Override
     public void setup(SpriteLoader spriteLoader) {
-        comboText = new ComboText(manager);
+        comboText = new ComboText();
+        getGameEngine().addEntity(comboText);
     }
 
     @Override
@@ -29,38 +29,30 @@ public class CollisionCore extends AbstractEntity {
         ArrayList<Asteroid> asteroids = asteroidRandom.getAsteroids();
         ArrayList<LaserShot> shots = playerShip.getShots();
 
-        Thread t = new Thread(){
-            @Override
-            public void run() {
-                for(int i=0; i<asteroids.size(); i++){
-
-                    if(playerShip.isHitMe(asteroids.get(i).getHitbox())){
-                        comboText.resetCounter();
-                        asteroids.get(i).explode();
-                    }
-                }
+        for (Asteroid asteroid : asteroids) {
+            if (asteroid.getHitbox() == null){
+                continue;
             }
-        };
-        t.start();
 
-        for(int i=0; i<asteroids.size(); i++){
+            for (LaserShot laserShot : shots) {
 
-            for(int a = 0; a<shots.size(); a++){
-                if(asteroids.get(i).getHitbox().intersect(shots.get(a).getHitbox())){
+                if (laserShot.getHitbox() == null){
+                    continue;
+                }
 
-                    if(shots.get(a).isAlive()){
+                if(asteroid.getHitbox().intersect(laserShot.getHitbox())){
+                    if(laserShot.isAlive()) {
                         comboText.incrementCounter();
-                        asteroids.get(i).explode();
-                        shots.get(a).destroy();
+                        asteroid.explode();
+                        laserShot.destroy();
                     }
                 }
             }
-        }
 
-        try {
-            t.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            if (playerShip.isHitMe(asteroid.getHitbox())) {
+                comboText.resetCounter();
+                asteroid.explode();
+            }
         }
     }
 }

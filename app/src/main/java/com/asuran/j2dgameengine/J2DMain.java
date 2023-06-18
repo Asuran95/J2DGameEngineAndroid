@@ -4,14 +4,7 @@ import com.asuran.j2dgameengine.spaceshipgame.SpaceShipMain;
 
 public class J2DMain {
 
-    private GameEngine manager;
-
-    public J2DMain(GameEngine manager) {
-        this.manager = manager;
-    }
-
-    public void loadAllTextures(SpriteLoader spriteLoader){
-
+    public void loadTextures(SpriteLoader spriteLoader){
         spriteLoader.addTexture("background.png");
         spriteLoader.addTexture("starsoneb.png");
         spriteLoader.addTexture("ship.png");
@@ -21,7 +14,7 @@ public class J2DMain {
         spriteLoader.addTexture("alphabet.png", 17, 3);
     }
 
-    public void setupEntitiesGame(){
-        new SpaceShipMain(manager);
+    public void setupEntitiesGame(GameEngine gameEngine){
+        gameEngine.addEntity(new SpaceShipMain());
     }
 }

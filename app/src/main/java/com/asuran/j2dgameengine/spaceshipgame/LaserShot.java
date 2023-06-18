@@ -15,10 +15,8 @@ public class LaserShot extends AbstractEntity {
     private GLSprite shot;
     private GLRect hitbox;
 
-    public LaserShot(GameEngine manager, float w) {
-        super(manager);
+    public LaserShot(float w) {
         this.w = w;
-        hitbox = new GLRect(0, 0, 0, 0);
     }
 
     @Override
@@ -26,17 +24,17 @@ public class LaserShot extends AbstractEntity {
         shot = spriteLoader.getTexture("shot.png");
         shot.resize(0.06f);
         hitbox = new GLRect(shot.getWidht(), shot.getHeight(), w, h);
+        hitbox.setPos(w, h);
     }
 
     @Override
     public void update() {
         hitbox.setPos(w, h);
-        h -= speed*manager.getLastFrameTime();
+        h -= speed * getGameEngine().getLastFrameTime();
 
-        if(h<0){
+        if(h<0) {
             alive = false;
         }
-
     }
 
     @Override
@@ -46,9 +44,7 @@ public class LaserShot extends AbstractEntity {
 
     public GLRect getHitbox(){
         //return new Rect(50,100,100,50);
-
         return hitbox;
-
     }
 
     public void destroy(){

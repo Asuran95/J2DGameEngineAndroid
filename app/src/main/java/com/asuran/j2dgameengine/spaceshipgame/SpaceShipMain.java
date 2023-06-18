@@ -9,26 +9,23 @@ import com.asuran.j2dgameengine.listeners.GestureListener;
 import com.asuran.j2dgameengine.utils.GLRect;
 
 public class SpaceShipMain extends AbstractEntity {
-    public SpaceShipMain(GameEngine manager) {
-        super(manager);
-    }
-
     private SpaceBackground spaceBackground;
     private PlayerShip playerShip;
     private GLRect pointer = new GLRect(0.1f, 0.1f, 0.0f, 0.0f);
 
     @Override
     public void setup(SpriteLoader spriteLoader) {
-        spaceBackground = new SpaceBackground(this.manager);
-        playerShip = new PlayerShip(this.manager);
-        AsteroidRandom asteroidRandom = new AsteroidRandom(this.manager);
-        new CollisionCore(manager, playerShip, asteroidRandom);
-        manager.addTouchListener(new Touch());
-    }
+        spaceBackground = new SpaceBackground();
+        getGameEngine().addEntity(spaceBackground);
 
-    @Override
-    public void draw(J2DCanvas j2d) {
-        //j2d.drawRect(pointer);
+        playerShip = new PlayerShip();
+        getGameEngine().addEntity(playerShip);
+
+        AsteroidRandom asteroidRandom = new AsteroidRandom();
+        getGameEngine().addEntity(asteroidRandom);
+
+        getGameEngine().addEntity(new CollisionCore(playerShip, asteroidRandom));
+        getGameEngine().addTouchListener(new Touch());
     }
 
     class Touch implements GestureListener{
@@ -52,13 +49,9 @@ public class SpaceShipMain extends AbstractEntity {
 
         @Override
         public void onMoving(float x, float y) {
-
             if(moveShip){
                 playerShip.fireAndMove(x);
             }
-
         }
     }
-
-
 }

@@ -21,13 +21,11 @@ public class Asteroid extends AbstractEntity {
     private int direction;
     private GLRect hitbox;
 
-    public Asteroid(GameEngine manager, float posX, float size, float speed) {
-        super(manager);
+    public Asteroid(float posX, float size, float speed) {
         this.posX = posX;
         this.size = size;
         this.speed = speed;
         this.direction = new Random().nextInt(2);
-        hitbox = new GLRect(0, 0, 0, 0);
     }
 
     @Override
@@ -36,19 +34,18 @@ public class Asteroid extends AbstractEntity {
         asteroid.resize(size);
         init = true;
         hitbox = new GLRect(asteroid.getWidht(), asteroid.getHeight(), posX, h);
+        hitbox.setPos(posX, h);
     }
 
     @Override
     public void update() {
-        h += speed*manager.getLastFrameTime();
-
+        h += speed * getGameEngine().getLastFrameTime();
 
         if(direction == 0){
             angle += (0.1f * (speed*10));
         } else {
             angle -= (0.1f * (speed*10));
         }
-
 
         asteroid.setAngle(angle);
         if(h > 0.5f){
@@ -69,7 +66,8 @@ public class Asteroid extends AbstractEntity {
     }
 
     public void explode(){
-        new Explosion(this.manager, posX, h, size, speed);
+        getGameEngine().addEntity(new Explosion(posX, h, size, speed));
+
         alive = false;
     }
 

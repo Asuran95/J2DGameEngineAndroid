@@ -14,10 +14,6 @@ public class ComboText extends AbstractEntity {
     private int count           =           0;
     private boolean hide        =           true;
 
-    public ComboText(GameEngine manager) {
-        super(manager);
-    }
-
     @Override
     public void setup(SpriteLoader spriteLoader) {
         alphabet = spriteLoader.getTexture("alphabet.png");
@@ -35,7 +31,7 @@ public class ComboText extends AbstractEntity {
 
 
         if(size > 0.05f){
-            size -= 0.1f*manager.getLastFrameTime();
+            size -= 0.1f * getGameEngine().getLastFrameTime();
         } else {
 
         }

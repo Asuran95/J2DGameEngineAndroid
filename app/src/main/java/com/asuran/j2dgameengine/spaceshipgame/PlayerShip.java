@@ -11,13 +11,8 @@ import java.util.ArrayList;
 
 public class PlayerShip extends AbstractEntity {
 
-    public PlayerShip(GameEngine manager) {
-        super(manager);
-    }
-
     GLSprite shipSprite;
-
-    private float posX = manager.getWidth() * 0.5f;
+    private float posX = 0.0f;
     private float h = 0.8f;
     private GLRect hitboxa;
     private GLRect hitboxb;
@@ -30,6 +25,7 @@ public class PlayerShip extends AbstractEntity {
     public void setup(SpriteLoader spriteLoader) {
         shipSprite = spriteLoader.getTexture("ship.png");
         shipSprite.resize(0.2f);
+        posX = getGameEngine().getWidth() * 0.5f;
         hitboxa = new GLRect(shipSprite.getWidht()-(shipSprite.getWidht()*0.8f), shipSprite.getHeight()-(shipSprite.getHeight()*0.5f), posX, h);
         hitboxb = new GLRect(shipSprite.getWidht()-(shipSprite.getWidht()*0.4f), shipSprite.getHeight()-(shipSprite.getHeight()*0.85f), posX, (h+dHitbox));
         touchHitbox = new GLRect(shipSprite.getWidht(), shipSprite.getHeight(), posX, h);
@@ -40,7 +36,6 @@ public class PlayerShip extends AbstractEntity {
         hitboxa.setPos(posX, h);
         hitboxb.setPos(posX, (h+dHitbox));
         touchHitbox.setPos(posX, h);
-
 
         ArrayList<LaserShot> shotsAlive = new ArrayList();
         for(LaserShot a : shots){
@@ -54,7 +49,6 @@ public class PlayerShip extends AbstractEntity {
         if(fire){
             fire();
         }
-
     }
 
     @Override
@@ -91,11 +85,12 @@ public class PlayerShip extends AbstractEntity {
     }
 
     private long timeElapse = System.currentTimeMillis();
+
     public void fire(){
-
-
         if(System.currentTimeMillis() > timeElapse+300){
-            shots.add(new LaserShot(manager, posX));
+            LaserShot laserShot = new LaserShot(posX);
+            getGameEngine().addEntity(laserShot);
+            shots.add(laserShot);
             timeElapse = System.currentTimeMillis();
         }
     }
@@ -107,7 +102,6 @@ public class PlayerShip extends AbstractEntity {
     public void stopFire(){
         fire = false;
     }
-
 
     public ArrayList<LaserShot> getShots() {
         return shots;

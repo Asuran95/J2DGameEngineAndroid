@@ -93,7 +93,6 @@ public class GLRect {
     }
 
     public boolean intersect(GLRect glRect){
-
         Rect a = new Rect((int)((w-(x/2))*1000),(int)((h-(y/2))*1000),(int)((w+(x/2))*1000),(int)((h+(y/2))*1000));
         Rect b = new Rect((int)((glRect.getW()-(glRect.getX()/2))*1000),(int)((glRect.getH()-(glRect.getY()/2))*1000),(int)((glRect.getW()+(glRect.getX()/2))*1000),(int)((glRect.getH()+(glRect.getY()/2))*1000));
 
@@ -102,7 +101,5 @@ public class GLRect {
         } else {
             return false;
         }
-
-
     }
 }

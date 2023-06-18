@@ -14,8 +14,7 @@ public class Explosion extends AbstractEntity {
     private float size;
     private float speed;
 
-    public Explosion(GameEngine manager, float x, float y, float size, float speed) {
-        super(manager);
+    public Explosion(float x, float y, float size, float speed) {
         this.x = x;
         this.y = y;
         this.size = size * 2;
@@ -33,10 +32,9 @@ public class Explosion extends AbstractEntity {
 
     @Override
     public void update() {
-        y += speed*manager.getLastFrameTime();
+        y += speed * getGameEngine().getLastFrameTime();
 
         if(System.currentTimeMillis() > timeElapse+64){
-
             if(explosion.nextSprite()){
                 alive = false;
             }

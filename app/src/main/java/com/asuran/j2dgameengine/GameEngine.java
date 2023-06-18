@@ -2,23 +2,23 @@ package com.asuran.j2dgameengine;
 
 import android.content.Context;
 
-import com.asuran.j2dgameengine.entitiesclasses.IEntity;
+import com.asuran.j2dgameengine.entitiesclasses.AbstractEntity;
 import com.asuran.j2dgameengine.listeners.GestureListener;
-import com.asuran.j2dgameengine.utils.GLVec2f;
 import com.asuran.j2dgameengine.listeners.RenderListener;
+import com.asuran.j2dgameengine.utils.GLVec2f;
+
 import java.util.ArrayList;
+
 import javax.microedition.khronos.opengles.GL10;
 
 public class GameEngine {
 
     private J2DCanvas j2d;
-    private ArrayList<IEntity> entities = new ArrayList<>();
-    private ArrayList<IEntity> newEntities = new ArrayList<>();
+    private ArrayList<AbstractEntity> entities = new ArrayList<>();
+    private ArrayList<AbstractEntity> newEntities = new ArrayList<>();
     private GLVec2f display = new GLVec2f();
-    private RenderListener renderListener = new RenderListenerImp();
     private int framesPerSecond;
     private float lastFrameTime;
-    private J2DMain main;
     private SpriteLoader spriteLoader;
     private Context context;
     private RenderView renderView;
@@ -26,15 +26,14 @@ public class GameEngine {
     private float realY;
     private ArrayList<GestureListener> gestureListeners = new ArrayList<>();
 
-
     public GameEngine(Context context, RendererGL rendererGL, RenderView renderView){
-        main = new J2DMain(this);
         this.context = context;
-        rendererGL.setRenderListener(renderListener);
+        rendererGL.setRenderListener(new RenderListenerImp(this));
         this.renderView = renderView;
     }
 
-    public void addEntity(IEntity entity) {
+    public void addEntity(AbstractEntity entity) {
+        entity.setGameEngine(this);
         newEntities.add(entity);
     }
 
@@ -60,6 +59,12 @@ public class GameEngine {
 
     class RenderListenerImp implements RenderListener {
 
+        private GameEngine gameEngine;
+
+        public RenderListenerImp(GameEngine gameEngine) {
+            this.gameEngine = gameEngine;
+        }
+
         @Override
         public void onDisplayChanged(float w, float x, float h, float y) {
             display.v0 = w;
@@ -82,8 +87,9 @@ public class GameEngine {
         public void onBegin(GL10 gl) {
             j2d = new J2DCanvas(gl, display, context);
             spriteLoader = new SpriteLoader(gl, context);
-            main.loadAllTextures(spriteLoader);
-            main.setupEntitiesGame();
+            J2DMain main = new J2DMain();
+            main.loadTextures(spriteLoader);
+            main.setupEntitiesGame(gameEngine);
 
             renderView.setTouchListener((event, x, y) -> {
                 float posY = y/realY;
@@ -117,10 +123,9 @@ public class GameEngine {
 
         @Override
         public void onUpdate() {
-            ArrayList<IEntity> entitiesUpdated = new ArrayList<>();
+            ArrayList<AbstractEntity> entitiesUpdated = new ArrayList<>();
 
             for(int i=0; i<entities.size(); i++){
-
                 entities.get(i).update();
 
                 if(entities.get(i).isAlive()){

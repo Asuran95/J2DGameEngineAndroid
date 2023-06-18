@@ -25,11 +25,9 @@ public class SpriteLoader {
     public SpriteLoader(GL10 gl, Context context) {
         this.gl = gl;
         this.context = context;
-
     }
 
     public void addTexture(String file){
-
         Bitmap[] tempImage = new Bitmap[1]; // 1
 
         try {
@@ -53,7 +51,6 @@ public class SpriteLoader {
             e.printStackTrace();
         }
 
-
         Bitmap[] tempImage = new Bitmap[cutH*cutW];
         int w = image.getWidth()/cutW;
         int h = image.getHeight()/cutH;
@@ -63,7 +60,6 @@ public class SpriteLoader {
                 tempImage[j+(cutW*i)] = Bitmap.createBitmap(image,j*w,i*h,w,h);
             }
         }
-
 
         texturePool.put(file, loadImage(tempImage));
 
