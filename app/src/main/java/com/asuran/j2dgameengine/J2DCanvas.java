@@ -76,6 +76,8 @@ public class J2DCanvas {
         gl.glMatrixMode(GL11.GL_MODELVIEW);
         gl.glLoadIdentity();
 
+//        gl.glColor4f(1.0f, 0.0f, 0.0f, 1.0f);
+
         //gl.glTranslatef(-3.0f,0.0f, -3.0f);
 
         gl.glTranslatef(calcX,calcY, -3.0f);

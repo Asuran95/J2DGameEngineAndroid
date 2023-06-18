@@ -19,14 +19,11 @@ public class SpaceShipMain extends AbstractEntity {
 
     @Override
     public void setup(SpriteLoader spriteLoader) {
-
-
         spaceBackground = new SpaceBackground(this.manager);
         playerShip = new PlayerShip(this.manager);
         AsteroidRandom asteroidRandom = new AsteroidRandom(this.manager);
         new CollisionCore(manager, playerShip, asteroidRandom);
         manager.addTouchListener(new Touch());
-
     }
 
     @Override

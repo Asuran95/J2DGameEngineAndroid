@@ -32,10 +32,9 @@ public class GameEngine {
         this.context = context;
         rendererGL.setRenderListener(renderListener);
         this.renderView = renderView;
-
     }
 
-    public void addEntity(IEntity entity){
+    public void addEntity(IEntity entity) {
         newEntities.add(entity);
     }
 
@@ -91,7 +90,6 @@ public class GameEngine {
                 float posX = (x/realX)*display.v0;
 
                 if(event.getAction() == 0){
-
                     for(GestureListener g : gestureListeners){
                         g.onDown(posX, posY);
                     }
@@ -104,10 +102,7 @@ public class GameEngine {
                     for(GestureListener g : gestureListeners){
                         g.onMoving(posX, posY);
                     }
-
-                    //System.out.println(posX);
                 }
-
             });
         }
 

@@ -20,6 +20,9 @@ public class RendererGL implements GLSurfaceView.Renderer {
         gl.glShadeModel(GL11.GL_SMOOTH);
         //gl.glEnable(GL11.GL_DEPTH_TEST); This break Alpha Color on the textures loaded.
 
+        gl.glMatrixMode(GL11.GL_PROJECTION);
+        gl.glLoadIdentity();
+
     }
 
     private boolean loadTextures = true;
@@ -29,8 +32,8 @@ public class RendererGL implements GLSurfaceView.Renderer {
 
         gl.glViewport(0, 0, width, height);
         float ratio = (float) width / height;
-        gl.glMatrixMode(GL11.GL_PROJECTION);
-        gl.glLoadIdentity();
+//        gl.glMatrixMode(GL11.GL_PROJECTION);
+//        gl.glLoadIdentity();
         gl.glFrustumf(-ratio, ratio, -1, 1, 1, 10);
 
         renderListener.onDisplayChanged(ratio, (float)width, 1.0f, (float)height);

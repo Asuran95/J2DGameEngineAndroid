@@ -10,6 +10,7 @@ public abstract class AbstractEntity implements IEntity {
     protected boolean alive = true;
     protected int layer = 0;
     protected GLVec2f position = new GLVec2f(0, 0);
+
     protected GameEngine manager;
 
     public AbstractEntity(GameEngine manager){
@@ -46,6 +47,4 @@ public abstract class AbstractEntity implements IEntity {
     public boolean isAlive() {
         return alive;
     }
-
-
 }

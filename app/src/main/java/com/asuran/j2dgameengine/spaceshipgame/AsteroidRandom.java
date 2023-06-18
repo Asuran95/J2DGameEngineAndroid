@@ -17,9 +17,8 @@ public class AsteroidRandom extends AbstractEntity {
     long timeElapse = System.currentTimeMillis();
     @Override
     public void update() {
-        
         ArrayList<Asteroid> asteroidsAlive = new ArrayList();
-        for(Asteroid a : asteroids){
+        for (Asteroid a : asteroids) {
             if(a.isAlive()){
                 asteroidsAlive.add(a);
             }
@@ -30,9 +29,7 @@ public class AsteroidRandom extends AbstractEntity {
             asteroids.add(new Asteroid(manager, rand.nextFloat()*(manager.getWidth() - 0.1f) + 0.1f, rand.nextFloat()*(0.1f - 0.05f) + 0.05f, rand.nextFloat()*(0.5f - 0.1f) + 0.1f));
             timeElapse = System.currentTimeMillis();
         }
-
     }
-
     public ArrayList<Asteroid> getAsteroids() {
         return asteroids;
     }
